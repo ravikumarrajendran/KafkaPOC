@@ -46,7 +46,7 @@ public class ProducerDemoKeySyncCall {
 					}
 					
 				}
-			}).get();
+			}).get(); // block the send() to make it synchronous
 	}
             // flush and close
             kp.flush();
