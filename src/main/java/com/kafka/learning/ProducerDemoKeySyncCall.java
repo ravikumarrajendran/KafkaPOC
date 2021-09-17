@@ -1,6 +1,7 @@
 package com.kafka.learning;
 
 import java.util.Properties;
+import java.util.concurrent.ExecutionException;
 
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -11,10 +12,10 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ProducerDemo {
+public class ProducerDemoKeySyncCall {
 
-	public static void main(String[] args) {
-		final Logger logger = LoggerFactory.getLogger(ProducerDemo.class);
+	public static void main(String[] args) throws InterruptedException, ExecutionException {
+		final Logger logger = LoggerFactory.getLogger(ProducerDemoKeySyncCall.class);
 		
 		logger.info("Entering into produer");
 		// Create Producer Properties
@@ -45,7 +46,7 @@ public class ProducerDemo {
 					}
 					
 				}
-			});
+			}).get();
 	}
             // flush and close
             kp.flush();
